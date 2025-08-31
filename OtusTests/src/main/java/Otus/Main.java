@@ -1,17 +1,61 @@
 package Otus;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        int[] array = generate(18);
+        int[] minMax = findMinAndMax(array);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        printArray(array);
+
+        System.out.println("Минимум " + minMax[0]);
+        System.out.println("Максимум " + minMax[1]);
+
+        float avg = getAverage(array);
+        System.out.println("Среднее значение " + avg);
     }
+
+    private static int[] generate(int size){
+        int[] array = new int[size];
+
+        for (int i=0; i<array.length; i++){
+            array[i] = new Random().nextInt(30);
+    }
+        return array;
 }
+    private static int[] findMinAndMax (int[] array){
+        int min = array[0];
+        int max = array[0];
+
+        for (int i = 1; i< array.length; i++){
+            if (array[i]< min){
+                min = array[i];
+            } else if (array[i] > max) {
+                max = array[i];
+                
+            }
+        }
+        return new int[]{min,max};
+    }
+
+    private static void printArray(int[] array){
+        System.out.println("Массив ");
+        for (int value : array){
+            System.out.print(value + " ");
+        }
+        System.out.println();
+    }
+
+    private static float getAverage(int[] array){
+        int sum = 0;
+
+        for (int num : array){
+            sum += num;
+        }
+        return sum/(float)array.length;
+
+    }
+
+}
+
