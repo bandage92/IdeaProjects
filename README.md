@@ -1,2 +1,0 @@
-# IdeaProjects
-Otus homework
